@@ -1,7 +1,7 @@
 # This snippet is a GitHub Actions workflow configuration file that defines a CI/CD pipeline for a project.
 # It includes steps for building, notifying, and deploying the project, with specific actions for sending notifications via Telegram and creating GitHub releases.
 
-name: Notification Release Pipeline
+name: CI Notification Release Pipeline
 
 on:
   push:
