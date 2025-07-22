@@ -1,7 +1,7 @@
 # This GitHub Actions workflow automatically formats shell scripts in a repository using `shfmt`.
 # It includes steps to check out the code, set up `shfmt`, format all `.sh` files, check for changes, and create a pull request if any files were modified.
 
-name: CI BashShell Formatter PR Pipeline
+name: GH Workflow BashScript Pretty
 
 # Permissions for the workflow
 # This workflow requires write permissions to contents and pull requests

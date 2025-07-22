@@ -3,7 +3,7 @@
 # It also checks if the tag exists before creating a release.
 # The workflow uses the softprops/action-gh-release action to create a GitHub release.
 
-name: CI Release Pipeline
+name: GH Workflow Base
 
 on:
   push:
