@@ -1,4 +1,9 @@
-name: wsdkit workflow
+# This GitHub Actions workflow is designed to run on pushes to the master branch and on pull requests.
+# It builds the project, runs tests, and deploys a release when a tag is pushed.
+# It also checks if the tag exists before creating a release.
+# The workflow uses the softprops/action-gh-release action to create a GitHub release.
+
+name: GH Workflow Base
 
 on:
   push:
@@ -9,28 +14,32 @@ on:
     branches: ["master"]
 
 jobs:
+  # This job runs on pushes to the master branch and pull requests.
+  # It checks out the repository, installs dependencies, and runs tests.
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
-          echo "(Build) Installations or dependencies here"
+          echo "Dependencies here"
 
       - name: Run tests
         run: |
           echo "Test commands here"
-
+  # This job runs on pushes to the master branch and pull requests.
+  # It checks out the repository, installs dependencies, and runs tests.
   deploy:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
     needs: build
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Ensure all history is fetched
 
       - name: Check if tag exists
         id: check_tag
@@ -47,14 +56,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "(Deploy) Installations or dependencies here"
+          echo "Dependencies here"
 
       - name: Create GitHub Release
         id: create_release
-        uses: softprops/action-gh-release@v1
-        # uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1 # uses: actions/create-release@v1
         with:
-          # tag_name: ${{ steps.check_tag.outputs.tag }}
           tag_name: ${{ env.TAG }}
           body: |
             :gem: released new version ${{ env.TAG }}
