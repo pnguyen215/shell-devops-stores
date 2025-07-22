@@ -1,5 +1,7 @@
 # 🔒 Enable Allow-Pull-Request Setting on GitHub
 
+> Refer [CI-BashShell-Formatter-PR](https://github.com/pnguyen215/shell-devops-stores/blob/master/ci-cd/github-actions/ci-bashshell-formatter-pr.yml)
+
 ```yaml
 # Permissions for the workflow
 # This workflow requires write permissions to contents and pull requests
